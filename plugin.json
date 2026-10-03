@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "iphone-duo-migration",
+  "version": "0.1.0",
+  "description": "Adapt iOS apps for iPhone Duo with SDK capability checks, fold-aware UX guidance, and evidence-based verification.",
+  "author": {
+    "name": "Nitin Alabur",
+    "url": "https://github.com/nitinalabur"
+  },
+  "homepage": "https://github.com/nitinalabur/iphone-duo-migration",
+  "repository": "https://github.com/nitinalabur/iphone-duo-migration",
+  "license": "MIT",
+  "keywords": [
+    "ios",
+    "iphone-duo",
+    "swiftui",
+    "xcode",
+    "adaptive-layout"
+  ]
+}

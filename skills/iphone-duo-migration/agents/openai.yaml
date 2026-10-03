@@ -1,0 +1,4 @@
+interface:
+  display_name: "iPhone Duo Migration"
+  short_description: "Adapt iOS apps to both Duo displays and folds"
+  default_prompt: "Use $iphone-duo-migration to audit this iOS app for iPhone Duo and implement the changes I request."
