@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Revalidated the Duo API probe with Xcode 27.1 RC and refreshed submission and simulator evidence for the current toolchain.
+
 ## 0.1.0 — 2026-10-02
 
 - Initial skill and plugin package for auditing and adapting iOS apps for iPhone Duo.

@@ -1,14 +1,17 @@
 # Validation for 0.1.0
 
-Checked October 2, 2026. This records plugin/checker evidence, not a certification that arbitrary apps support iPhone Duo.
+Initial validation was checked October 2, 2026 and refreshed October 6, 2026. This records plugin/checker evidence, not a certification that arbitrary apps support iPhone Duo.
 
 | Check | Result |
 | --- | --- |
 | Python 3.9 unit tests | 19 passed: API-based qualification, future-version fixture, missing APIs, unknown/timeout errors, path aliases, renamed bundles, explicit ordering, runtime compatibility and availability |
-| Live Xcode 27.1 beta, build 27A9269, iOS SDK 27.1 | Swift API probe passed |
+| Live Xcode 27.1 RC, build 27A9275, iOS SDK 27.1 (October 6) | Explicitly selected RC passed the Swift API probe; checker recommended that selected toolchain |
+| Live Xcode 27.1 beta, build 27A9269, iOS SDK 27.1 | Swift API probe passed; narrow Duo declaration comparison with RC found no changes |
 | Live Xcode 26.5, build 17F42, iOS SDK 26.5 | Correctly unsupported: required API declarations absent |
 | Live Xcode 27.0 builds 27A5237l, 27A5252f, 27A266a | Correctly unsupported: required API declarations absent |
-| Live simulator inventory | Compatible available Duo runtime and existing Duo devices found; inventory only |
+| Live simulator inventory (October 2) | Compatible available Duo runtime and existing Duo devices found; inventory only |
+| Live simulator inventory (October 6, RC) | Unknown: CoreSimulatorService connection failed on this host; this does not establish runtime/device absence |
+| App Store Connect eligibility (October 6) | Apple release notes allow uploads built with Xcode 27.1 RC and iOS 27.1 SDK for App Store review and internal/external TestFlight; this is not review approval ([source](https://developer.apple.com/help/app-store-connect/release-notes/)) |
 | Generic SwiftUI example | Type-checked with iOS 27.1 SDK and iOS 15 simulator deployment target |
 | Skill validator | Passed frontmatter/name/scaffold checks |
 | Portable manifest | Passed the published Agent Plugins 1.0.0 JSON schema |

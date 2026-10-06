@@ -12,7 +12,7 @@ Use it to audit an existing app, implement focused layout changes, or review a m
 - Produces a pose-testing matrix with evidence and explicit gaps.
 - Separates build capability, simulator availability, device verification, and App Store eligibility.
 
-The checker does not depend on an exact Xcode version or app filename. The initial API baseline was verified with Xcode 27.1 beta on October 2, 2026; later toolchains qualify when the required APIs compile. Recheck Apple documentation when APIs or submission rules change.
+The checker does not depend on an exact Xcode version or app filename. The API baseline first passed on Xcode 27.1 beta and was rechecked with Xcode 27.1 RC (build 27A9275) on October 6, 2026. A narrow comparison of the Duo-related declarations found no changes between those builds; this does not claim the full SDK is unchanged. Recheck Apple documentation when APIs or submission rules change.
 
 ## Requirements
 
@@ -95,6 +95,8 @@ The compile probe verifies `ArrangementView`, the split arrangement style, and t
 | `2` | Invalid invocation or capability could not be determined |
 
 Simulator status is reported separately. Missing runtimes, absent devices, service errors, and skipped checks do not become a false claim of simulator readiness. A successful SDK check does not prove that your project builds, that the UI works in each pose, or that Apple accepts the build for distribution.
+
+Apple announced on October 5, 2026 that apps built with Xcode 27.1 RC and the iOS 27.1 SDK can be uploaded for App Store review and internal or external TestFlight. This is upload eligibility, not approval of a specific app. Check the current [App Store Connect release notes](https://developer.apple.com/help/app-store-connect/release-notes/) before distributing with a prerelease SDK.
 
 The checker leaves global Xcode selection and simulator configuration unchanged. It uses temporary compiler files and cache, then cleans them up. Full JSON reports contain local installation paths; review them before posting publicly.
 
