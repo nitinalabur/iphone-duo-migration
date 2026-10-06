@@ -19,6 +19,8 @@ Treat poses as test cases, not layout enum values. The same inner display can ha
 
 ## Inspect capabilities, then design the container
 
+Where supported, use [Apple's exported resizability guidance](apple-skills.md) for the baseline API audit, launch/orientation/full-screen prerequisites, and dynamic safe-area handling. It complements the task-design and fold-specific checks here; it is not a mandatory installation or a replacement for the SDK probe.
+
 Run the bundled read-only `scripts/check_xcode.py` relative to the skill directory with `--json`; optionally pass one or more `--xcode PATH` choices. It discovers installed Xcode/SDK candidates and compiles a probe for the required APIs. Check its result and current SDK declarations before coding. Do not require an Xcode installation with a particular name. If the SDK lacks an API, choose an available layout or explicitly arrange a compatible build configuration; a runtime `#available` branch cannot make missing symbols compile. Swift compiler version alone is not an SDK feature test.
 
 The source migration used these iOS 27.1 APIs; validate their declarations and target availability in the destination toolchain:
@@ -35,7 +37,9 @@ Give an arrangement a bounded area and scroll *inside* each pane. A long editor 
 
 Keep the task's state above geometry-dependent branches: draft values, selected IDs, media identities, navigation destination, chart/filter state, and any in-progress operation. Pass bindings or stable models into compact and expanded compositions. For each content or step replacement, choose whether focus, scroll offset, and zoom should reset or restore. In a multi-step scroll flow, reset to the new step's start when carrying the previous step's offset would hide its choices; keep the draft above that step branch and test both behaviors. Do not key an entire task view by orientation or fold. Guard newer APIs by OS availability while retaining a complete compact path for the project's existing minimum OS and other supported platforms.
 
-The [SwiftUI example](../assets/DuoReviewExample.swift) demonstrates parent-owned draft and selection state, a native split arrangement, and a complete compact fallback. It was type-checked with the iOS 27.1 SDK and an iOS 15 deployment target. Its 700-point breakpoint is an example content decision, not a hardware constant. It uses placeholder reference imagery and needs the destination app's model, saving, accessibility, and visual testing.
+An active division alone does not prove that a window spans the fold. In multitasking the region can sit at or outside the window's edge. For custom layout decisions, compare active region frames with the local view bounds and require usable space on both sides of an intersecting division. A narrow window beside the fold needs one reachable compact task, not two independently scrolling panes stacked into that window. Also check available height before choosing paired panes in a flat window.
+
+The [SwiftUI example](../assets/DuoReviewExample.swift) and its [layout helper](../assets/DuoPaneLayout.swift) demonstrate parent-owned draft and selection state, a native split arrangement, and a complete compact fallback. Include both files when adapting the example. They are type-checked together with the iOS 27.1 SDK and an iOS 15 deployment target. The 700-by-500-point flat-window threshold and 240-by-180-point minimum for each folded pane are example content decisions, not hardware constants; adjust them for the destination task. The example uses placeholder reference imagery and needs the destination app's model, saving, accessibility, and visual testing.
 
 ## Camera and presentation paths
 

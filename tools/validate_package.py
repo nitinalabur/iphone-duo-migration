@@ -35,7 +35,8 @@ def main():
             if not re.search(r"(?m)^description: *\S", frontmatter):
                 errors.append("Skill is missing its discovery description")
         for resource in ("agents/openai.yaml", "scripts/check_xcode.py", "references/migration-guide.md",
-                         "assets/project-brief.md", "assets/verification-matrix.md"):
+                         "assets/project-brief.md", "assets/verification-matrix.md",
+                         "assets/DuoReviewExample.swift", "assets/DuoPaneLayout.swift"):
             if not (skill / resource).is_file():
                 errors.append("Missing skill resource: " + resource)
         for doc in root.rglob("*.md"):
