@@ -1,6 +1,6 @@
-# Validation for 0.1.0
+# Validation for 0.1.1
 
-Initial validation was checked October 2, 2026 and refreshed October 6, 2026. This records plugin/checker evidence, not a certification that arbitrary apps support iPhone Duo.
+Initial validation was checked October 2, 2026 and refreshed October 6, 2026 for release 0.1.1. The October 6 release checks rerun the 19 unit tests and package-integrity validation; the live RC probe and simulator inventory were verified earlier the same day. Unchanged skill/schema and behavioral-evaluation results below are retained from 0.1.0. This records plugin/checker evidence, not a certification that arbitrary apps support iPhone Duo.
 
 | Check | Result |
 | --- | --- |

@@ -1,6 +1,6 @@
 {
   "name": "iphone-duo-migration",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Adapt iOS apps for iPhone Duo with SDK capability checks, fold-aware UX guidance, and evidence-based verification.",
   "author": {
     "name": "Nitin Alabur",

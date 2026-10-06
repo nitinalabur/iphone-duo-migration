@@ -27,7 +27,7 @@ The Python checker uses only the standard library. The package has no MCP server
 With a Codex CLI that supports plugin marketplaces:
 
 ```bash
-codex plugin marketplace add nitinalabur/iphone-duo-migration --ref v0.1.0
+codex plugin marketplace add nitinalabur/iphone-duo-migration --ref v0.1.1
 codex plugin add iphone-duo-migration@iphone-duo-migration
 ```
 
