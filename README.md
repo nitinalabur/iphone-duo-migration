@@ -66,9 +66,22 @@ Useful resources:
 - [Verification matrix](skills/iphone-duo-migration/assets/verification-matrix.md)
 - [SwiftUI layout example](skills/iphone-duo-migration/assets/DuoReviewExample.swift)
 
-## Work with Apple's Xcode skills
+## How this complements Apple's Xcode skill
 
-Xcode 27.1 RC can export Apple-authored skills with `xcrun agent skills export`. Its `app-resizability` skill explicitly covers iPhone Duo and gives detailed modernization rules for screen, orientation, device-idiom, lifecycle, and safe-area code. This package adds task design, fold-region handling, state preservation, capability discovery, and pose-testing evidence.
+Xcode 27.1 RC can export Apple-authored skills with `xcrun agent skills export`. Its `app-resizability` skill already explicitly supports iPhone Duo and provides detailed modernization rules for screen, orientation, device-idiom, lifecycle, and safe-area code.
+
+This repository is a practical Duo migration companion to that guidance, with capability checks, fold-aware examples, and a repeatable verification workflow.
+
+| What this repository adds | Practical value |
+| --- | --- |
+| [Xcode capability detection](skills/iphone-duo-migration/scripts/check_xcode.py) | Finds installed toolchains and compiles real Duo APIs rather than relying on a version number. Reports simulator availability separately. |
+| [Duo-specific task design](skills/iphone-duo-migration/references/migration-guide.md) | Helps choose useful paired workflows with `ArrangementView` and reserved-region examples. Guides preservation of drafts, selections, and media across compact, open, and partially folded layouts. |
+| [Tested fold geometry](tests/layout/main.swift) | Covers narrow multitasking windows, divisions at or outside window edges, and insufficient space for usable panes. |
+| [Migration verification](skills/iphone-duo-migration/assets/verification-matrix.md) | Provides a test plan for poses, keyboard and sheet interactions, accessibility, older iPhones, and physical-device checks, with evidence and explicit gaps. |
+
+For API modernization alone, Apple's skill may be sufficient. Use this repository alongside it when you also want to redesign and validate the app's Duo experience. For example, a photo-review flow needs a decision about when paired panes should become one scrolling form, plus checks that selected photos and unfinished edits survive the transition.
+
+This comparison is based on the Xcode 27.1 RC (27A9275) export inspected on October 6, 2026. That export did not include `ArrangementView`, `reservedRegions`, or Laptop/Tent-specific layout instructions; Apple's coverage may expand. The bundled geometry tests do not automatically verify an app's UI or physical-device behavior.
 
 Follow the [optional Apple-skill workflow](skills/iphone-duo-migration/references/apple-skills.md) to export into a new temporary directory using your selected Xcode, inspect its actual contents, and preserve audit-only scope. Exporting may launch Xcode; it is separate from the read-only SDK checker and is not a required installation step. Apple skills are not bundled or relicensed by this repository.
 
