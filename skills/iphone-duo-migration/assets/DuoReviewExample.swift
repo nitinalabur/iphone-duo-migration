@@ -1,4 +1,4 @@
-// Illustrative layout; connect your own model and persistence.
+// Illustrative layout; include DuoPaneLayout.swift and connect your model and persistence.
 import SwiftUI
 
 @available(iOS 15.0, *)
@@ -9,11 +9,11 @@ struct DuoReviewExample: View {
     var body: some View {
         if #available(iOS 27.1, *) {
             GeometryReader { geometry in
-                let hasDivision = geometry
+                let divisions = geometry
                     .reservedRegions(kind: .division)
-                    .contains { $0.isActive }
+                    .filter(\.isActive).map(\.frame)
 
-                if hasDivision || geometry.size.width >= 700 {
+                if DuoPaneLayout.usesSplitPanes(size: geometry.size, activeDivisionFrames: divisions) {
                     ArrangementView {
                         Form { editorFields }
                     } secondary: {

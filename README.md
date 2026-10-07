@@ -27,7 +27,7 @@ The Python checker uses only the standard library. The package has no MCP server
 With a Codex CLI that supports plugin marketplaces:
 
 ```bash
-codex plugin marketplace add nitinalabur/iphone-duo-migration --ref v0.1.1
+codex plugin marketplace add nitinalabur/iphone-duo-migration --ref v0.1.2
 codex plugin add iphone-duo-migration@iphone-duo-migration
 ```
 
@@ -65,6 +65,14 @@ Useful resources:
 - [Project brief](skills/iphone-duo-migration/assets/project-brief.md)
 - [Verification matrix](skills/iphone-duo-migration/assets/verification-matrix.md)
 - [SwiftUI layout example](skills/iphone-duo-migration/assets/DuoReviewExample.swift)
+
+## Work with Apple's Xcode skills
+
+Xcode 27.1 RC can export Apple-authored skills with `xcrun agent skills export`. Its `app-resizability` skill explicitly covers iPhone Duo and gives detailed modernization rules for screen, orientation, device-idiom, lifecycle, and safe-area code. This package adds task design, fold-region handling, state preservation, capability discovery, and pose-testing evidence.
+
+Follow the [optional Apple-skill workflow](skills/iphone-duo-migration/references/apple-skills.md) to export into a new temporary directory using your selected Xcode, inspect its actual contents, and preserve audit-only scope. Exporting may launch Xcode; it is separate from the read-only SDK checker and is not a required installation step. Apple skills are not bundled or relicensed by this repository.
+
+The example now includes [DuoPaneLayout.swift](skills/iphone-duo-migration/assets/DuoPaneLayout.swift). Include it alongside the view. A division at or outside a multitasking window's edge must not force that narrow window into paired panes.
 
 ## Run the Xcode checker directly
 
@@ -109,7 +117,13 @@ python3 -m unittest discover -s tests -v
 python3 tools/validate_package.py
 ```
 
-Unit tests use mocked tool responses and can run without Xcode. A live check on a Mac is separate evidence. The CI workflow checks portable behavior; it does not claim to test Duo hardware.
+On a Mac with Xcode, run the example's geometry regression cases:
+
+```bash
+bash tools/test_swift_layout.sh
+```
+
+Unit tests use mocked tool responses and can run without Xcode. A live check on a Mac is separate evidence. CI checks portable behavior and runs the geometry cases on macOS; it does not claim to test the Duo UI or hardware.
 
 See [release validation](VALIDATION.md) for the checks completed for this package and their limits.
 

@@ -14,6 +14,10 @@ For each primary task, mark **Pass**, **Fail**, **Not tested**, or **Not applica
 | Fold with keyboard, sheet, or alert open | Focus, dismiss, and commit remain reachable | [status] | [path or reason] |
 | Light/dark, larger text, accessibility | Legible layout and sensible reading/focus order | [status] | [path or reason] |
 | Reduced window width / multitasking | Essential content remains reachable | [status] | [path or reason] |
+| Partially folded, app in left and right multitasking panes | A division at/outside the window edge does not force paired panes; scroll and commit remain reachable | [status] | [path or reason] |
+| Vertical bar changes edge without resizing | Controls follow current local safe areas; no cached or symmetric inset assumptions | [status] | [path or reason] |
+| Right-to-left layout and asymmetric safe areas | Leading/trailing behavior is correct; no doubled clearance or clipped controls | [status] | [path or reason] |
+| Sheet or child pane with its own safe area | Local controls use their container's safe area rather than the parent/window's | [status] | [path or reason] |
 | Conventional iPhone on minimum supported iOS | Complete compact flow and runtime fallback | [status] | [path or reason] |
 | Physical Duo camera, if relevant | Intended direction, preview, capture, selected media | [status] | [path or reason] |
 

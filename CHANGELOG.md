@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.2 — 2026-10-06
+
+- Added an optional workflow for consulting Apple’s Xcode-exported resizability skill, preserving audit-only scope and keeping Apple files outside this package.
+- Expanded dynamic safe-area and vertical-bar guidance, project prerequisites, and left/right multitasking and right-to-left verification cases.
+- Fixed the SwiftUI example so a division at or outside a narrow window’s edge does not force paired panes; short flat windows keep the compact flow.
+- Added 20 executable Swift geometry regression cases and a macOS CI job. The SDK checker’s API baseline and JSON format are unchanged.
+
 ## 0.1.1 — 2026-10-06
 
 - Revalidated the Duo API probe with Xcode 27.1 RC (27A9275), confirmed compatible Duo simulator inventory, and refreshed submission evidence for the current toolchain.
